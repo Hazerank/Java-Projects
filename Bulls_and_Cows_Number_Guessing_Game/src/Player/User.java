@@ -41,7 +41,7 @@ public class User implements Player {
 				if(temp.equals("exit")) return -2;
 				if(temp.equals("clear")) {
 					clearWork();
-					System.out.println(work + "\n");
+					System.out.println(work + " (add)  (delete)  (clear) (-)" + "\n");
 					scan.nextLine();
 				}
 				else if(temp.equals("add")) {
@@ -51,7 +51,7 @@ public class User implements Player {
 							System.out.println();
 						}
 						if(scan.next().equals("-")) {
-							System.out.println(work + "\n");
+							System.out.println(work + " (add)  (delete)  (clear) (-)" + "\n");
 							break;
 						}
 					}
@@ -63,7 +63,7 @@ public class User implements Player {
 							work.remove((Integer)scan.nextInt());
 						}
 						if(scan.next().equals("-")) {
-							System.out.println(work + "\n");
+							System.out.println(work + " (add)  (delete)  (clear) (-)" + "\n");
 							break;
 						}
 					}

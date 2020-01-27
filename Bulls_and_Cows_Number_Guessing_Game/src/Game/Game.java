@@ -44,7 +44,22 @@ public class Game {
 	}
 	
 	public static String help() {
-		System.out.println("This is help.");
+		System.out.println("\n"
+				+ "The game is usually played with 4 digits, but can also be played with 3 or any other number of digits.\r\n" + 
+				"\r\n" + 
+				"The players each determine a 4-digit secret number. The digits must be all different. \n"
+				+ "Then, in turn, the players try to guess their opponent's number who gives the number of matches. \n"
+				+ "If the matching digits are in their right positions, they are \"+\", if in different positions, they are \"-\". Example:\r\n" + 
+				"\r\n" + 
+				"Secret number: 4271\r\n" + 
+				"Opponent's try: 1234\r\n" + 
+				"Answer: 1 '+' and 2 '-'. (The '+' is \"2\", the '-' are \"4\" and \"1\".)\r\n" + 
+				"The first one to reveal the other's secret number in the least number of guesses wins the game.");
+		System.out.println();
+		System.out.println("There is a bar in the guessing screen. You can adjust number with the comments \"add\" , \"delete\" and \"clear\"."
+				+ "\nAfter comments \"add\" and \"delete\", insert the numbers and than type \"-\" at the and in order to finalize comment section.\n"
+				+ "In order to reset bar, just type \"clear\". \n"
+				+ "You can continue guessing.");
 		System.out.println();
 		System.out.println("You can write 'Start' to play game now if you'd understood.");
 		System.out.println("If you couldn't get the rules still and/or if you think that you are a \"funny\" person and printing 'help' makes you happier"
@@ -109,7 +124,7 @@ public class Game {
 			
 			user.getHistory();
 			System.out.println("Please make a guess: \n");
-			System.out.println(((User)user).getWork() + "\n");
+			System.out.println(((User)user).getWork() + " (add)  (delete)  (clear) (-)" + "\n");
 			int move = user.move();
 			if(move == -1) return true; if(move == -2) return false;
 			user.addHistory(move);
@@ -200,7 +215,7 @@ public class Game {
 	}
 	
 	public void setNum() {
-		System.out.println("With how many number do you play ? ");
+		System.out.println("With how many digit do you play ? ");
 		while(scan.hasNext()) {
 			if(!scan.hasNextInt()) {
 				System.out.println("Please enter a valid number.");

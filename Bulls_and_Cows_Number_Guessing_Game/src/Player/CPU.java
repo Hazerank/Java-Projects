@@ -56,29 +56,37 @@ public class CPU implements Player {
 		return number;
 	}
 	private int move2() {
-		int numberTot = 0 ;
-		do {
-			numberTot = 0 ;
-			for(int i = 0 ; i < Game.gameNumber; i++) {
-				numberTot +=  poss.get(rand.nextInt(poss.size())) * ( Math.pow(10, i));
-			}
-		} while (!Game.valid(numberTot));
-		return numberTot;	
+		if(history.size() < 2 || history.size() % 4 != 0) {
+			int numberTot = 0 ;
+			do {
+				numberTot = 0 ;
+				for(int i = 0 ; i < Game.gameNumber; i++) {
+					numberTot +=  poss.get(rand.nextInt(poss.size())) * ( Math.pow(10, i));
+				}
+			} while (!Game.valid(numberTot));
+			return numberTot;	
 		}
+		ArrayList<Integer> answer = deepThought(0);
+		return answer.get((rand.nextInt(answer.size())));	
+	}
 	
 	private int move3() {
-		int numberTot = 0 ;
-		do {
-			numberTot = 0 ;
-			for(int i = 0 ; i < Game.gameNumber; i++) {
-				numberTot +=  poss.get(rand.nextInt(poss.size())) * ( Math.pow(10, i));
-			}
-		} while (!Game.valid(numberTot));
-		return numberTot;	
+		if(history.size() < 2 || history.size() % 3 != 0) {
+			int numberTot = 0 ;
+			do {
+				numberTot = 0 ;
+				for(int i = 0 ; i < Game.gameNumber; i++) {
+					numberTot +=  poss.get(rand.nextInt(poss.size())) * ( Math.pow(10, i));
+				}
+			} while (!Game.valid(numberTot));
+			return numberTot;	
+		}
+		ArrayList<Integer> answer = deepThought(0);
+		return answer.get((rand.nextInt(answer.size())));	
 	}
 	
 	private int move4() {
-		if(history.size() < 2) {
+		if(history.size() < 2 || history.size() % 3 == 0) {
 			int numberTot = 0 ;
 			do {
 				numberTot = 0 ;
@@ -90,7 +98,7 @@ public class CPU implements Player {
 		}
 		ArrayList<Integer> answer = deepThought(0);
 		return answer.get((rand.nextInt(answer.size())));
-		}
+	}
 	
 	private int move5() {
 		if(history.size() < 2) {
@@ -105,8 +113,6 @@ public class CPU implements Player {
 		}
 		ArrayList<Integer> answer = deepThought(0);
 		return answer.get((rand.nextInt(answer.size())));
-		
-		
 	}
 	
 	public void addHistory(int num) {
